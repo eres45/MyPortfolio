@@ -5,7 +5,7 @@ import path from 'path'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '',
+  base: './',
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'src')
@@ -15,9 +15,18 @@ export default defineConfig({
     outDir: 'dist',
     sourcemap: true,
     rollupOptions: {
-      input: path.resolve(__dirname, 'index.html'),
-      external: []
+      input: {
+        app: path.resolve(__dirname, 'index.html')
+      },
+      external: [
+        'react',
+        'react-dom',
+        'react-dom/client'
+      ]
     }
+  },
+  optimizeDeps: {
+    include: ['react', 'react-dom']
   },
   server: {
     port: 3000,
