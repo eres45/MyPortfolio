@@ -6,20 +6,6 @@
   NODE_VERSION = "18.17.0"
   NPM_VERSION = "9.6.7"
 
-[build.processing]
-  skip_processing = false
-
-[build.processing.css]
-  bundle = true
-  minify = true
-
-[build.processing.js]
-  bundle = true
-  minify = true
-
-[build.processing.images]
-  compress = true
-
 [[redirects]]
   from = "/*"
   to = "/index.html"
@@ -28,10 +14,8 @@
 [[headers]]
   for = "/*"
   [headers.values]
+    Cache-Control = "public, max-age=31536000"
     X-Frame-Options = "DENY"
     X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
-    Content-Security-Policy = "default-src 'self' 'unsafe-inline' 'unsafe-eval' *.netlify.app; img-src 'self' data: blob: https:; media-src 'self' data: blob: https:; connect-src 'self' https:; font-src 'self' data: https:; style-src 'self' 'unsafe-inline' https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:;"
-    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
-    Cache-Control = "public, max-age=31536000"
